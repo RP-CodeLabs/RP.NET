@@ -1,4 +1,6 @@
-﻿namespace RP.Net.Web.Models
+﻿using RP.Net.Web.Configuartion;
+
+namespace RP.Net.Web.Models
 {
     public class CustomerDetailsViewModel
     {
@@ -8,5 +10,6 @@
         public string MobileNumber { get; set; }
         public string EmailAddress { get; set; }
         public string HomeNumber { get; set; }
+        public CustomerDetailConfiguration Configuration { get; set; }
     }
 }

@@ -19,15 +19,26 @@ namespace RP.Net.Common
         public static Result OnBoth(this Result result, Func<Result, Result> func)
             => result.IsFailure ? result : func(result);
 
+        public static T OnBoth<T>(this Result<T> result, Func<Result, T> func) => func(result);
+
         public static Result<TOutput> Map<TSource, TOutput>(this Result<TSource> result, Func<TSource, TOutput> func)
             => result.IsFailure ? Result.Fail(func(result.Value), result.Error) : Result.Ok(func(result.Value));
 
         public static Result<TOutput> OnSuccess<TSource, TOutput>(this Result<TSource> result, Func<TSource, TOutput> func)
             => result.IsFailure ? Result.Fail(func(result.Value), result.Error) : Result.Ok(func(result.Value));
 
+        public static Result OnSuccess(this Result result, Action action)
+        {
+            if (result.IsSuccess)
+            {
+                action(); 
+            }
+            return result;
+        }
+
         public static Result OnFailure(this Result result, Action<Result> action)
         {
-            if (!result.IsFailure)
+            if (result.IsFailure)
             {
                 action(result);
             }
@@ -36,7 +47,7 @@ namespace RP.Net.Common
 
         public static Result<TSource> OnFailure<TSource>(this Result<TSource> result, Action<Result> action)
         {
-            if (result.IsSuccess)
+            if (result.IsFailure)
             {
                 action(result);
             }

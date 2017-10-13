@@ -15,10 +15,10 @@ namespace RP.Net.Common
         {
             get
             {
-                if (IsFailure)
-                {
-                    throw new InvalidOperationException();
-                }
+                //if (IsFailure)
+                //{
+                //    throw new InvalidOperationException();
+                //}
                 return _value;
             }
         }

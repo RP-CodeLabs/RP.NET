@@ -21,7 +21,7 @@ namespace RP.Net.Tests
             var logger = new Logger();
             _mapper = new CustomerDetailViewModelMapper(logger);
             _viewModel = new CustomerDetailsViewModel();
-            _serviceResponse = new ServiceResponse<CustomerEntity>(CustomerDetails())
+            _serviceResponse = new ServiceResponse<CustomerEntity>(FakeCustomerDetails.CustomerDetails())
             {
                 IsSuccess = true
             };
@@ -45,7 +45,7 @@ namespace RP.Net.Tests
         public void map_customer_details_from_service_response_to_customerviewmodel_has_dateofbirth()
         {
             var result = _mapper.Map(_viewModel, _serviceResponse);
-            Assert.That(result.DateOfBirth, Is.EqualTo("01/01/0001"));
+            Assert.That(result.DateOfBirth, Is.EqualTo("01/01/0001 00:00:00"));
         }
 
         [Test]
@@ -88,23 +88,6 @@ namespace RP.Net.Tests
         {
             var result = _mapper.Map(Maybe<CustomerDetailsViewModel>.None, Maybe<ServiceResponse<CustomerEntity>>.None);
             Assert.That(result, Is.Null);
-        }
-
-        public static CustomerEntity CustomerDetails()
-        {
-            return new CustomerEntity()
-            {
-                Title = "Mr",
-                FirstName = "Test",
-                LastName = "Customer",
-                DateOfBirth = "01/01/0001",
-                EmailAddress = "test@test.com",
-                EmploymentStatus = "FullTime",
-                HomeNumber = "01",
-                MobileNumber = "0123456789",
-                Occupation = "Software Engineer",
-                PostalAddress = new PostalAddressEntity { Line1 = "Some Avenue", Postcode = "XA11XA"}
-            };
         }
     }
 }

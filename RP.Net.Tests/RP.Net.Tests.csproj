@@ -45,7 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerDetailsViewModelMapperTests.cs" />
+    <Compile Include="FakeCustomerDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomerDetailViewModelBuilderTests.cs" />
+    <Compile Include="ValidateConfigurationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

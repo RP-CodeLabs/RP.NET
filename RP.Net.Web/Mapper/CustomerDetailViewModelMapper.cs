@@ -38,7 +38,7 @@ namespace RP.Net.Web.Mapper
                 return Result.Fail(new Dictionary<string, object>() {{nameof(customer.Value), customer.Value}});
             }
             viewModel.FullName = PersonName.Create(customer).Value;
-            viewModel.DateOfBirth = CustomerDateOfBirth.Create(customer.Value.DateOfBirth, "dd/MM/yyyy").Value;
+            viewModel.DateOfBirth = CustomerDateOfBirth.Create(customer.Value.DateOfBirth, viewModel.Configuration?.Format).Value;
             viewModel.Address = PostalAddress.Create(customer.Value.PostalAddress).Value;
             viewModel.MobileNumber = customer.Value.MobileNumber;
             viewModel.HomeNumber = customer.Value.HomeNumber;

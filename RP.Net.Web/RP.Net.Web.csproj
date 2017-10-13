@@ -143,12 +143,21 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Builders\Common\ValidateBuilderConfiguration.cs" />
+    <Compile Include="Builders\CustomerDetailViewModelBuilder - Copy.cs">
+      <DependentUpon>CustomerDetailViewModelBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Builders\CustomerDetailViewModelBuilder.cs" />
+    <Compile Include="Builders\Interfaces\IViewModelBuilder.cs" />
+    <Compile Include="Configuartion\BaseConfiguration.cs" />
+    <Compile Include="Configuartion\CustomerDetailConfiguration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logging\Logger.cs" />
-    <Compile Include="Mapper\CustomerDetailsViewModelMapper.cs" />
+    <Compile Include="Mapper\CustomerDetailsViewModelMapper.cs">
+      <DependentUpon>CustomerDetailViewModelMapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mapper\CustomerDetailViewModelMapper.cs" />
     <Compile Include="ValueObjects\CustomerDateOfBirth.cs" />
     <Compile Include="ValueObjects\PersonName.cs" />
@@ -196,6 +205,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
